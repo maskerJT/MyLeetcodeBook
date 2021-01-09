@@ -1,0 +1,22 @@
+同构字符串：
+对于这种问题，有人的思路是：通过第一个字符串的形式找出它的通项公式，比如：
+abbab=12212
+这种方法有值得借鉴的地方就是，它尝试使用一个模板来描述一个字符串。
+但是开销有点大，因为你必须得先找出通项公式。
+
+简单一点的方式是：对于字符串中的每一个不同的字符，你都实时对比在另外一个字符串中出现的所有位置。
+但是代码比较难写，实时对比
+
+真正的解题方式是使用到string中的标准函数find()
+这个函数可以返回寻找某个子字符串的位置。
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        if(s.size()!=t.size()) return false;
+        for(int i=0;i<s.size();i++){
+            if(s.find(s[i])!=t.find(t[i]))
+            return false;
+        }
+        return true;
+    }
+};
